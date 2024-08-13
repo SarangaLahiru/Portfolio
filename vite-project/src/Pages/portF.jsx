@@ -48,7 +48,7 @@ export default function PortF() {
                                 Asdf sdfsdfsdf
                             </Typography>
                             <Typography variant="subtitle1" align="center" color="textSecondary">
-                                sdfd sdfsf
+                                undergraduate
                             </Typography>
                             <Grid container justifyContent="center" sx={{ marginTop: '10px' }}>
                                 <IconButton color="primary" href="https://www.facebook.com" target="_blank">
