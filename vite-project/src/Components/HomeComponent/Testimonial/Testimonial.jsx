@@ -28,7 +28,10 @@ export default function Testimonial() {
                 His Cliend Saying
 
             </Typography>
-            <TestCarosal />
+
+            <div className='w-full'>
+                <TestCarosal />
+            </div>
 
         </div>
     )

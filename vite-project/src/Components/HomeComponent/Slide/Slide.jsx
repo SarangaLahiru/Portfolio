@@ -14,7 +14,7 @@ const theme = createTheme({
 export default function Slide() {
     return (
         <ThemeProvider theme={theme}>
-            <div className='h-fit bg-gradient-to-br to-[#d3d3d3] from-white lg:px-64 lg:py-8'>
+            <div className='h-fit bg-gradient-to-br to-[#d3d3d3] from-white lg:px-[78px] lg:py-8'>
                 <Grid container spacing={0}>
                     <Grid item xs={12} md={8} >
                         <div className='content'>
