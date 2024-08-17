@@ -198,46 +198,50 @@ export default function CardGallery() {
                         <Grid container spacing={2} sx={{ marginTop: '15px' }}>
                             {cards.map((card) => (
                                 <Grid item xs={12} sm={3} key={card.id}>
-                                    <Card sx={{ maxWidth: 400 }}>
+                                    <Card sx={{ maxWidth: 400 }} onClick={() => handleDetailOpen(card)}>
                                         <CardHeader
                                             action={
-                                                <IconButton aria-label='settings' onClick={() => handleDetailOpen(card)}>
+                                                <IconButton aria-label="settings" onClick={() => handleDetailOpen(card)}>
                                                     <MoreVert />
                                                 </IconButton>
                                             }
                                             title={card.title}
                                             subheader={card.subheader}
                                         />
-                                        <CardMedia component='img' height='194' image={card.image} alt={card.title} />
+                                        <CardMedia component="img" height="194" image={card.image} alt={card.title} />
                                         <CardContent>
-                                            <Typography variant='body2' color='text.secondary'>
+                                            <Typography variant="body2" color="text.secondary">
                                                 {card.description}
                                             </Typography>
                                         </CardContent>
                                         <CardActions disableSpacing>
                                             <IconButton
-                                                aria-label='add to favorites'
+                                                aria-label="add to favorites"
                                                 onClick={() => handleLike(card.id, card.likes, card.likedBy || [])}
                                                 color={likedCards.includes(card.id) ? 'primary' : 'default'}
                                             >
-                                                <Favorite /> <Typography>{card.likes}</Typography>
+                                                <Favorite />
+                                                <Typography sx={{ ml: 1 }}>{card.likes}</Typography>
                                             </IconButton>
-                                            <IconButton aria-label='share' onClick={() => handleUserListOpen(card.likedByDetails)} >
+                                            <IconButton aria-label="show liked by" onClick={() => handleUserListOpen(card.likedByDetails)}>
                                                 {card.likedByDetails && card.likedByDetails.length > 0 ? (
                                                     <AvatarGroup max={4}>
                                                         {card.likedByDetails.map((user, index) =>
                                                             user ? (
                                                                 <Avatar key={index} alt={user.name} src={user.avatar} />
-                                                            ) : 'Unknown'
+                                                            ) : (
+                                                                <Avatar key={index}>U</Avatar>
+                                                            )
                                                         )}
                                                     </AvatarGroup>
-                                                ) : ' No one yet'}
+                                                ) : (
+                                                    <Typography>No one yet</Typography>
+                                                )}
                                             </IconButton>
-                                            <IconButton aria-label='share'>
+                                            <IconButton aria-label="share">
                                                 <Share />
                                             </IconButton>
                                         </CardActions>
-
                                     </Card>
                                 </Grid>
                             ))}
@@ -317,9 +321,10 @@ export default function CardGallery() {
             </Dialog>
             <Dialog
                 fullScreen
-
                 TransitionComponent={Transition}
-                open={openDetailDialog} onClose={handleDetailClose}>
+                open={openDetailDialog}
+                onClose={handleDetailClose}
+            >
                 <AppBar sx={{ position: 'relative' }}>
                     <Toolbar>
                         <IconButton
@@ -333,55 +338,84 @@ export default function CardGallery() {
                         <Typography sx={{ ml: 2, flex: 1 }} variant="h6" component="div">
                             Sound
                         </Typography>
-                        <Button autoFocus color="inherit" onClick={handleClose}>
-                            save
+                        <Button autoFocus color="inherit" onClick={handleDetailClose}>
+                            Save
                         </Button>
                     </Toolbar>
                 </AppBar>
 
-                <Grid container spacing={2} >
-                    <Grid xs={12} sm={8}>
-                        <DialogContentText sx={{ margin: '30px' }}>
-                            <img src={selectedCard?.image} alt={selectedCard?.title} style={{ width: '100%' }} />
-                        </DialogContentText>
+                <DialogContent>
+                    <Grid container spacing={2}>
+                        {/* Main Image Section */}
+                        <Grid item xs={12} sm={8}>
+                            <DialogContentText sx={{ margin: '30px 0' }}>
+                                <img
+                                    src={selectedCard?.image}
+                                    alt={selectedCard?.title}
+                                    style={{ width: '100%', borderRadius: '8px' }}
+                                />
+                            </DialogContentText>
 
-                        <Grid container spacing={2}>
-                            <Grid item xs={6} md={6}>
-                                <DialogContentText sx={{ margin: '30px' }}>
-                                    <img src={selectedCard?.image} alt={selectedCard?.title} style={{ width: '100%' }} />
-                                </DialogContentText>
-                            </Grid>
-                            <Grid item xs={6} md={6}>
-                                <DialogContentText sx={{ margin: '30px' }}>
-                                    <img src={selectedCard?.image} alt={selectedCard?.title} style={{ width: '100%' }} />
-                                </DialogContentText>
+                            {/* Additional Images */}
+                            <Grid container spacing={2}>
+                                <Grid item xs={6}>
+                                    <DialogContentText sx={{ margin: '0 15px' }}>
+                                        <img
+                                            src={selectedCard?.image}
+                                            alt={selectedCard?.title}
+                                            style={{ width: '100%', borderRadius: '8px' }}
+                                        />
+                                    </DialogContentText>
+                                </Grid>
+                                <Grid item xs={6}>
+                                    <DialogContentText sx={{ margin: '0 15px' }}>
+                                        <img
+                                            src={selectedCard?.image}
+                                            alt={selectedCard?.title}
+                                            style={{ width: '100%', borderRadius: '8px' }}
+                                        />
+                                    </DialogContentText>
+                                </Grid>
                             </Grid>
                         </Grid>
+
+                        {/* Details Section */}
+                        <Grid item xs={12} sm={4}>
+                            <DialogTitle>{selectedCard?.title}</DialogTitle>
+                            <DialogContent>
+                                <DialogContentText sx={{ marginBottom: '15px' }}>
+                                    <strong>Description:</strong> {selectedCard?.description}
+                                </DialogContentText>
+                                <DialogContentText sx={{ marginBottom: '15px' }}>
+                                    <strong>Likes:</strong> {selectedCard?.likes}
+                                </DialogContentText>
+                                <DialogContentText>
+                                    <strong>Liked By:</strong>
+                                    <Box sx={{ display: 'flex', flexDirection: 'column', gap: '8px', marginTop: '8px' }}>
+                                        {selectedCard?.likedByDetails.length > 0 ? (
+                                            selectedCard.likedByDetails.map((user) => (
+                                                <Box key={user.id} sx={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                                                    <Avatar
+                                                        alt={user.name}
+                                                        src={user.avatar}
+                                                        sx={{ width: 32, height: 32 }}
+                                                    />
+                                                    <Typography variant="body2" sx={{ fontWeight: '500' }}>
+                                                        {user.name}
+                                                    </Typography>
+                                                </Box>
+                                            ))
+                                        ) : (
+                                            <Typography>No one yet</Typography>
+                                        )}
+                                    </Box>
+                                </DialogContentText>
+                            </DialogContent>
+                        </Grid>
                     </Grid>
-
-
-
-
-                    <Grid xs={12} sm={4}>
-                        <DialogTitle>{selectedCard?.title}</DialogTitle>
-                        <DialogContent>
-                            <DialogContentText>
-                                <img src={selectedCard?.image} alt={selectedCard?.title} style={{ width: '100%' }} />
-                            </DialogContentText>
-                            <DialogContentText>
-                                <strong>Description:</strong> {selectedCard?.description}
-                            </DialogContentText>
-                            <DialogContentText>
-                                <strong>Likes:</strong> {selectedCard?.likes}
-                            </DialogContentText>
-                            <DialogContentText>
-                                <strong>Liked By:</strong> {selectedCard?.likedByDetails.map(user => user.name).join(', ') || 'No one yet'}
-                            </DialogContentText>
-                        </DialogContent>
-                    </Grid>
-
-                </Grid>
+                </DialogContent>
             </Dialog>
+
         </ThemeProvider >
     );
 }
