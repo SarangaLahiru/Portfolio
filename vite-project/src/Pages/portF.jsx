@@ -149,27 +149,24 @@ export default function PortF() {
                             className="bg-white m-2 h-fit"
                             style={{ backgroundImage: "url('/Images/Group 242.png')", backgroundSize: 'cover', backgroundPosition: 'center' }}
                         >
-
                             <Grid container>
                                 <Grid item xs={12} sm={8}>
                                     <Typography variant="body1" color="initial">
-
                                         <div className='content'>
-                                            <h2 className=' text-[black]'
+                                            <h2
+                                                className='text-black'
                                                 style={{
                                                     fontFamily: '"Poppins", sans-serif',
                                                     fontWeight: '700',
-
                                                 }}
-                                            >Hi, I'm  Asdf reted
-                                                <span className=' text-[#FF9843]'>Shot What able </span>
-                                                cold new the
-                                            </h2>
-
-                                            <p
-                                                className=' text-[#8c8888] mt-[20px] text-[20px]'
                                             >
-                                                Shot What able cold new the see hold.Friendly as an betrayed formarly me.morning because as to society behaved moment.
+                                                Hi, I'm Sashika Lahiru
+                                                <span className='text-[#FF9843]'>— Passionate Developer</span>
+                                            </h2>
+                                            <p
+                                                className='text-[#8c8888] mt-[20px] text-[20px]'
+                                            >
+                                                I’m a web and mobile developer based in Sri Lanka. I specialize in creating high-quality digital solutions with a focus on user experience and functionality. Explore my work and feel free to reach out.
                                             </p>
                                             <Box
                                                 sx={{
@@ -187,64 +184,57 @@ export default function PortF() {
                                                         fontSize: "18px"
                                                     }}
                                                     variant="contained"
-
                                                 >
-                                                    Download
+                                                    Download Resume
                                                 </Button>
-
                                             </Box>
-
                                         </div>
-
                                     </Typography>
-
                                 </Grid>
                                 <Grid item xs={12} sm={4}>
                                     <div className='p-2'>
-                                        <img className='w-[200px] m-auto' src="https://www.esalibirth.com/wp-content/uploads/2015/09/man1.png" alt="" />
+                                        <img className='w-[200px] m-auto' src="https://www.esalibirth.com/wp-content/uploads/2015/09/man1.png" alt="Profile" />
                                     </div>
                                 </Grid>
-
-
                             </Grid>
                         </div>
+
                         <Typography variant="body1" color="initial"
                             sx={{
                                 color: "#FF9843",
                                 fontSize: "30px",
                                 fontFamily: '"Poppins", sans-serif',
-                                textAlign: "center"
+                                textAlign: "center",
+                                marginTop: '20px'
                             }}
                         >
                             Blog
-
                         </Typography>
                         <Typography variant="body1" color="initial"
                             sx={{
-
                                 fontSize: "40px",
                                 fontFamily: '"Poppins", sans-serif',
                                 textAlign: "center",
-                                fontWeight: "700"
+                                fontWeight: "700",
+                                marginTop: '10px'
                             }}
                         >
                             Latest Updates
-
                         </Typography>
-                        <div className='bg-white m-2'>
 
+                        <div className='bg-white m-2'>
                             <Box sx={{ width: '100%', typography: 'body1' }}>
                                 <TabContext value={value}>
                                     <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
-                                        <TabList onChange={handleChange} aria-label="lab API tabs example">
+                                        <TabList onChange={handleChange} aria-label="tabs example">
                                             <Tab label="Item One" value="1" />
                                             <Tab label="Item Two" value="2" />
                                             <Tab label="Item Three" value="3" />
                                         </TabList>
                                     </Box>
-                                    <TabPanel value="1">Item One</TabPanel>
-                                    <TabPanel value="2">Item Two</TabPanel>
-                                    <TabPanel value="3">Item Three</TabPanel>
+                                    <TabPanel value="1">Content for Item One</TabPanel>
+                                    <TabPanel value="2">Content for Item Two</TabPanel>
+                                    <TabPanel value="3">Content for Item Three</TabPanel>
                                 </TabContext>
                             </Box>
                         </div>
