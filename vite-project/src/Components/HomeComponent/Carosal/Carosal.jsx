@@ -75,7 +75,7 @@ export default function Carosal() {
                 <div className=' w-full p-[100px]'>
                     <div className="slider-container">
 
-                        <Slider {...settings} className='w-[100%] m-auto'>
+                        <Slider {...settings} className='w-full m-auto'>
                             <Card sx={{}}>
                                 <CardMedia
                                     sx={{ height: 140 }}

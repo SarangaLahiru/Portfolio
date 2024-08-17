@@ -75,7 +75,7 @@ export default function TestCarosal() {
                                         </div>
                                     </Grid>
                                     <Grid item xs={12}>
-                                        <h2 className=' text-[20px] lg:w-[600px]'>Wikipedia is a free, open content online encyclopedia created through the collaborative effort of a community of users known as Wikipedians. Anyone registered on the site can create an article for publication; registration is not required to edit articles.</h2>
+                                        <h2 className=' text-[20px] lg:w-[500px]'>Wikipedia is a free, open content online encyclopedia created through the collaborative effort of a community of users known as Wikipedians. Anyone registered on the site can create an article for publication; registration is not required to edit articles.</h2>
                                     </Grid>
 
                                 </Grid>
@@ -101,14 +101,14 @@ export default function TestCarosal() {
                                         </div>
                                     </Grid>
                                     <Grid item xs={12}>
-                                        <h2 className=' text-[20px] lg:w-[600px]'>Wikipedia is a free, open content online encyclopedia created through the collaborative effort of a community of users known as Wikipedians. Anyone registered on the site can create an article for publication; registration is not required to edit articles.</h2>
+                                        <h2 className=' text-[20px] lg:w-[500px]'>Wikipedia is a free, open content online encyclopedia created through the collaborative effort of a community of users known as Wikipedians. Anyone registered on the site can create an article for publication; registration is not required to edit articles.</h2>
                                     </Grid>
 
                                 </Grid>
                             </div>
                             <div className='lg:w-[300px]'>
 
-                                <Grid container spacing={2}>
+                                <Grid container spacing={3}>
                                     <Grid item xs={12}>
                                         <div className='flex'>
                                             <Avatar alt="Cindy Baker" src="/static/images/avatar/3.jpg"
@@ -127,7 +127,7 @@ export default function TestCarosal() {
                                         </div>
                                     </Grid>
                                     <Grid item xs={12}>
-                                        <h2 className=' text-[20px] lg:w-[600px]'>Wikipedia is a free, open content online encyclopedia created through the collaborative effort of a community of users known as Wikipedians. Anyone registered on the site can create an article for publication; registration is not required to edit articles.</h2>
+                                        <h2 className=' text-[20px] lg:w-[500px]'>Wikipedia is a free, open content online encyclopedia created through the collaborative effort of a community of users known as Wikipedians. Anyone registered on the site can create an article for publication; registration is not required to edit articles.</h2>
                                     </Grid>
 
                                 </Grid>
