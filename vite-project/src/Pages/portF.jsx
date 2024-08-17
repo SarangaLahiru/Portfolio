@@ -38,18 +38,21 @@ export default function PortF() {
             <div className='mt-[10px] bg-[#eaeaea]'>
                 <Grid container spacing={2}>
                     <Grid item xs={12} sm={3}>
-                        <div className='bg-[#ffffff] m-2'>
+                        <div className='bg-white m-2 p-4 rounded-lg shadow-md'>
+                            {/* Profile Avatar */}
                             <Avatar
                                 sx={{ margin: 'auto', width: '100px', height: '100px' }}
-                                alt="Remy Sharp"
+                                alt="Profile Picture"
                                 src="https://media.istockphoto.com/id/492529287/photo/portrait-of-happy-laughing-man.jpg?s=612x612&w=0&k=20&c=0xQcd69Bf-mWoJYgjxBSPg7FHS57nOfYpZaZlYDVKRE="
                             />
-                            <Typography variant="h5" align="center" sx={{ marginTop: '5px' }}>
-                                Asdf sdfsdfsdf
+                            <Typography variant="h5" align="center" sx={{ marginTop: '10px' }}>
+                                Sashika Lahiru
                             </Typography>
                             <Typography variant="subtitle1" align="center" color="textSecondary">
-                                undergraduate
+                                Undergraduate
                             </Typography>
+
+                            {/* Social Media Links */}
                             <Grid container justifyContent="center" sx={{ marginTop: '10px' }}>
                                 <IconButton color="primary" href="https://www.facebook.com" target="_blank">
                                     <Facebook />
@@ -62,68 +65,65 @@ export default function PortF() {
                                 </IconButton>
                             </Grid>
 
-                            <Divider sx={{ margin: '30px' }} />
+                            {/* Personal Details */}
+                            <Divider sx={{ margin: '20px 0' }} />
                             <Grid container spacing={2} sx={{ padding: '0 16px' }}>
                                 <Grid item xs={6}>
-                                    <span className='bg-[#FF9843] p-1'>Name :</span>
+                                    <Typography variant="body1" className='bg-[#FF9843] p-1'>
+                                        Name:
+                                    </Typography>
                                 </Grid>
                                 <Grid item xs={6}>
-                                    Asdf
+                                    Sashika Lahiru
                                 </Grid>
                                 <Grid item xs={6}>
-                                    <span className='bg-[#FF9843] p-1'>Age :</span>
+                                    <Typography variant="body1" className='bg-[#FF9843] p-1'>
+                                        Age:
+                                    </Typography>
                                 </Grid>
                                 <Grid item xs={6}>
-                                    Asdf
+                                    24
                                 </Grid>
                                 <Grid item xs={6}>
-                                    <span className='bg-[#FF9843] p-1'>Residence :</span>
+                                    <Typography variant="body1" className='bg-[#FF9843] p-1'>
+                                        Residence:
+                                    </Typography>
                                 </Grid>
                                 <Grid item xs={6}>
-                                    Asdf
+                                    Sabaragamuwa University of Sri Lanka
                                 </Grid>
                                 <Grid item xs={6}>
-                                    <span className='bg-[#FF9843] p-1'>Address :</span>
+                                    <Typography variant="body1" className='bg-[#FF9843] p-1'>
+                                        Address:
+                                    </Typography>
                                 </Grid>
                                 <Grid item xs={6}>
-                                    Asdf
+                                    [Your Address Here]
                                 </Grid>
                             </Grid>
 
-                            <Divider sx={{ margin: '30px' }} />
+                            {/* Skills */}
+                            <Divider sx={{ margin: '20px 0' }} />
                             <Grid container direction="column" spacing={2} sx={{ padding: '0 16px' }}>
-                                <h2 className='ml-4 text-[20px]' >Languages</h2>
+                                <Typography variant="h6" className='ml-4'>
+                                    Skills
+                                </Typography>
                                 <Grid item>
-                                    <Typography variant="p">Skill 1</Typography>
+                                    <Typography variant="body2">Skill 1</Typography>
+                                    <BorderLinearProgress variant="determinate" value={70} sx={{ width: '90%', height: '5px' }} />
+                                </Grid>
+                                <Grid item>
+                                    <Typography variant="body2">Skill 2</Typography>
                                     <BorderLinearProgress variant="determinate" value={50} sx={{ width: '90%', height: '5px' }} />
                                 </Grid>
                                 <Grid item>
-                                    <Typography variant="p">Skill 2</Typography>
-                                    <BorderLinearProgress variant="determinate" value={50} sx={{ width: '90%', height: '5px' }} />
-                                </Grid>
-                                <Grid item>
-                                    <Typography variant="p">Skill 3</Typography>
-                                    <BorderLinearProgress variant="determinate" value={50} sx={{ width: '90%', height: '5px' }} />
+                                    <Typography variant="body2">Skill 3</Typography>
+                                    <BorderLinearProgress variant="determinate" value={80} sx={{ width: '90%', height: '5px' }} />
                                 </Grid>
                             </Grid>
 
-                            <Divider sx={{ margin: '30px' }} />
-                            <Grid container direction="column" spacing={2} sx={{ padding: '0 16px' }}>
-                                <h2 className='ml-4 text-[20px]' >Languages</h2>
-                                <Grid item>
-                                    <Typography variant="p">Skill 1</Typography>
-                                    <BorderLinearProgress variant="determinate" value={50} sx={{ width: '90%', height: '5px' }} />
-                                </Grid>
-                                <Grid item>
-                                    <Typography variant="p">Skill 2</Typography>
-                                    <BorderLinearProgress variant="determinate" value={50} sx={{ width: '90%', height: '5px' }} />
-                                </Grid>
-                                <Grid item>
-                                    <Typography variant="p">Skill 3</Typography>
-                                    <BorderLinearProgress variant="determinate" value={50} sx={{ width: '90%', height: '5px' }} />
-                                </Grid>
-                            </Grid>
-                            <Divider sx={{ margin: '30px' }} />
+                            {/* Download Button */}
+                            <Divider sx={{ margin: '20px 0' }} />
                             <div className='m-auto w-[250px]'>
                                 <Button
                                     sx={{
@@ -134,7 +134,6 @@ export default function PortF() {
                                         borderRadius: "4px",
                                         fontFamily: '"Poppins", sans-serif',
                                         fontSize: "18px",
-
                                     }}
                                     variant="contained"
                                     endIcon={<Download />}
@@ -142,7 +141,7 @@ export default function PortF() {
                                     Download
                                 </Button>
                             </div>
-                            <Divider sx={{ margin: '30px' }} />
+                            <Divider sx={{ margin: '20px 0' }} />
                         </div>
                     </Grid>
                     <Grid item xs={12} sm={9}>
