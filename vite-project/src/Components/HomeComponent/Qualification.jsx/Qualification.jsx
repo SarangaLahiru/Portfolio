@@ -1,12 +1,11 @@
-import { CalendarMonth, MacroOff } from '@mui/icons-material'
-import { Box, Grid } from '@mui/material'
-import Typography from '@mui/material/Typography'
-import React from 'react'
+import { CalendarMonth, School, Work } from '@mui/icons-material';
+import { Box, Grid } from '@mui/material';
+import Typography from '@mui/material/Typography';
+import React from 'react';
 
 export default function Qualification() {
     return (
         <div className='p-4'>
-
             <Typography variant="body1" color="initial"
                 sx={{
                     color: "#FF9843",
@@ -15,26 +14,23 @@ export default function Qualification() {
                     textAlign: "center"
                 }}
             >
-                My Qualification
-
+                My Qualifications
             </Typography>
             <Typography variant="body1" color="initial"
                 sx={{
-
                     fontSize: "40px",
                     fontFamily: '"Poppins", sans-serif',
                     textAlign: "center",
                     fontWeight: "700"
                 }}
             >
-                Awesome Journey
-
+                My Journey
             </Typography>
             <Grid container spacing={2}>
-                <Grid item xs={12} sm={6} >
+                <Grid item xs={12} sm={6}>
                     <div className='m-auto lg:ml-72 mt-10'>
-                        <div className=' m-auto flex lg:w-52'>
-                            <MacroOff sx={{
+                        <div className='m-auto flex lg:w-52'>
+                            <School sx={{
                                 margin: '5px',
                                 fontSize: '50px'
                             }} />
@@ -46,103 +42,41 @@ export default function Qualification() {
                             >
                                 Education
                             </Typography>
-
                         </div>
                         <div>
-                            <Box display=""
-                                sx={{
-                                    padding: "20px 50px",
-                                    borderLeft: '2px #eca013 solid',
-                                    margin: "20px 0px"
-                                }}
-                            >
+                            <Box sx={{
+                                padding: "20px 50px",
+                                borderLeft: '2px #eca013 solid',
+                                margin: "20px 0px"
+                            }}>
                                 <Typography variant="body1" color="initial"
-                                    sx={{
-                                        fontSize: '20px',
-
-                                    }}
-
+                                    sx={{ fontSize: '20px' }}
                                 >
-                                    Envo Multi Envo Multi Envo Multi Multi
+                                    Kekirawa Central College
                                 </Typography>
-                                <h2 className=' text-[#787878]'>Author</h2>
-                                <h2 className=' text-[#eca013] mt-2'><CalendarMonth /> 2020 - 2024</h2>
-
-
+                                <Typography className='text-[#787878]'>High School</Typography>
+                                <Typography className='text-[#eca013] mt-2'><CalendarMonth /> 2010 - 2017</Typography>
                             </Box>
-                            <Box display=""
-                                sx={{
-                                    padding: "20px 50px",
-                                    borderLeft: '2px #eca013 solid',
-                                    margin: "20px 0px"
-                                }}
-                            >
+                            <Box sx={{
+                                padding: "20px 50px",
+                                borderLeft: '2px #eca013 solid',
+                                margin: "20px 0px"
+                            }}>
                                 <Typography variant="body1" color="initial"
-                                    sx={{
-                                        fontSize: '20px',
-
-                                    }}
-
+                                    sx={{ fontSize: '20px' }}
                                 >
-                                    Envo Multi Envo Multi Envo Multi Multi
+                                    Sabaragamuwa University of Sri Lanka
                                 </Typography>
-                                <h2 className=' text-[#787878]'>Author</h2>
-                                <h2 className=' text-[#eca013] mt-2'><CalendarMonth /> 2020 - 2024</h2>
-
-
+                                <Typography className='text-[#787878]'>BSc. Computing and Information Systems</Typography>
+                                <Typography className='text-[#eca013] mt-2'><CalendarMonth /> 2020 - 2024</Typography>
                             </Box>
-                            <Box display=""
-                                sx={{
-                                    padding: "20px 50px",
-                                    borderLeft: '2px #eca013 solid',
-                                    margin: "20px 0px"
-                                }}
-                            >
-                                <Typography variant="body1" color="initial"
-                                    sx={{
-                                        fontSize: '20px',
-
-                                    }}
-
-                                >
-                                    Envo Multi Envo Multi Envo Multi Multi
-                                </Typography>
-                                <h2 className=' text-[#787878]'>Author</h2>
-                                <h2 className=' text-[#eca013] mt-2'><CalendarMonth /> 2020 - 2024</h2>
-
-
-                            </Box>
-                            <Box display=""
-                                sx={{
-                                    padding: "20px 50px",
-                                    borderLeft: '2px #eca013 solid',
-                                    margin: "20px 0px"
-                                }}
-                            >
-                                <Typography variant="body1" color="initial"
-                                    sx={{
-                                        fontSize: '20px',
-
-                                    }}
-
-                                >
-                                    Envo Multi Envo Multi Envo Multi Multi
-                                </Typography>
-                                <h2 className=' text-[#787878]'>Author</h2>
-                                <h2 className=' text-[#eca013] mt-2'><CalendarMonth /> 2020 - 2024</h2>
-
-
-                            </Box>
-
-
-
                         </div>
                     </div>
                 </Grid>
-                <Grid item xs={12} sm={6} >
+                <Grid item xs={12} sm={6}>
                     <div className='m-auto lg:ml-24 mt-10'>
-                        <div className=' m-auto flex lg:w-96'>
-                            <MacroOff sx={{
+                        <div className='m-auto flex lg:w-96'>
+                            <Work sx={{
                                 margin: '5px',
                                 fontSize: '50px'
                             }} />
@@ -152,105 +86,27 @@ export default function Qualification() {
                                     fontSize: '30px'
                                 }}
                             >
-                                Education
+                                Experience
                             </Typography>
-
                         </div>
                         <div>
-                            <Box display=""
-                                sx={{
-                                    padding: "20px 50px",
-                                    borderLeft: '2px #eca013 solid',
-                                    margin: "20px 0px"
-                                }}
-                            >
+                            <Box sx={{
+                                padding: "20px 50px",
+                                borderLeft: '2px #eca013 solid',
+                                margin: "20px 0px"
+                            }}>
                                 <Typography variant="body1" color="initial"
-                                    sx={{
-                                        fontSize: '20px',
-
-                                    }}
-
+                                    sx={{ fontSize: '20px' }}
                                 >
-                                    Envo Multi Envo Multi Envo Multi Multi
+                                    AlphaNel Solutions
                                 </Typography>
-                                <h2 className=' text-[#787878]'>Author</h2>
-                                <h2 className=' text-[#eca013] mt-2'><CalendarMonth /> 2020 - 2024</h2>
-
-
+                                <Typography className='text-[#787878]'>Co-Founder</Typography>
+                                <Typography className='text-[#eca013] mt-2'><CalendarMonth /> 2022 - Present</Typography>
                             </Box>
-                            <Box display=""
-                                sx={{
-                                    padding: "20px 50px",
-                                    borderLeft: '2px #eca013 solid',
-                                    margin: "20px 0px"
-                                }}
-                            >
-                                <Typography variant="body1" color="initial"
-                                    sx={{
-                                        fontSize: '20px',
-
-                                    }}
-
-                                >
-                                    Envo Multi Envo Multi Envo Multi Multi
-                                </Typography>
-                                <h2 className=' text-[#787878]'>Author</h2>
-                                <h2 className=' text-[#eca013] mt-2'><CalendarMonth /> 2020 - 2024</h2>
-
-
-                            </Box>
-                            <Box display=""
-                                sx={{
-                                    padding: "20px 50px",
-                                    borderLeft: '2px #eca013 solid',
-                                    margin: "20px 0px"
-                                }}
-                            >
-                                <Typography variant="body1" color="initial"
-                                    sx={{
-                                        fontSize: '20px',
-
-                                    }}
-
-                                >
-                                    Envo Multi Envo Multi Envo Multi Multi
-                                </Typography>
-                                <h2 className=' text-[#787878]'>Author</h2>
-                                <h2 className=' text-[#eca013] mt-2'><CalendarMonth /> 2020 - 2024</h2>
-
-
-                            </Box>
-                            <Box display=""
-                                sx={{
-                                    padding: "20px 50px",
-                                    borderLeft: '2px #eca013 solid',
-                                    margin: "20px 0px"
-                                }}
-                            >
-                                <Typography variant="body1" color="initial"
-                                    sx={{
-                                        fontSize: '20px',
-
-                                    }}
-
-                                >
-                                    Envo Multi Envo Multi Envo Multi Multi
-                                </Typography>
-                                <h2 className=' text-[#787878]'>Author</h2>
-                                <h2 className=' text-[#eca013] mt-2'><CalendarMonth /> 2020 - 2024</h2>
-
-
-                            </Box>
-
-
-
-
                         </div>
                     </div>
                 </Grid>
-
             </Grid>
-
         </div>
-    )
+    );
 }

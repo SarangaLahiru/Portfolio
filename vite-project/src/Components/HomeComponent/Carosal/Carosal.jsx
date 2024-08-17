@@ -5,10 +5,32 @@ import Slider from "react-slick";
 const theme = createTheme({
     palette: {
         primary: {
-            main: '#FF9843', // Set the primary color to orange
+            main: '#FF9843',
         },
     },
+    typography: {
+        fontFamily: '"Poppins", sans-serif',
+    },
 });
+
+const carouselItems = [
+    {
+        title: "Lizard",
+        description: "Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging across all continents except Antarctica.",
+        image: "/static/images/cards/contemplative-reptile.jpg",
+    },
+    {
+        title: "Chameleon",
+        description: "Chameleons are distinctive and highly specialized clade of Old World lizards with over 160 species described.",
+        image: "/static/images/cards/contemplative-reptile.jpg",
+    },
+    {
+        title: "Gecko",
+        description: "Geckos are small lizards found in warm climates throughout the world, known for their vocalizations and unique toes.",
+        image: "/static/images/cards/contemplative-reptile.jpg",
+    },
+];
+
 export default function Carosal() {
 
     const settings = {
@@ -23,124 +45,71 @@ export default function Carosal() {
             {
                 breakpoint: 1024,
                 settings: {
-                    slidesToShow: 3,
-                    slidesToScroll: 3,
+                    slidesToShow: 2,
+                    slidesToScroll: 2,
                     infinite: true,
-                    dots: true
+                    dots: true,
                 }
             },
             {
                 breakpoint: 600,
                 settings: {
-                    slidesToShow: 2,
-                    slidesToScroll: 2,
-                    initialSlide: 2
+                    slidesToShow: 1,
+                    slidesToScroll: 1,
+                    initialSlide: 1,
                 }
             },
-            {
-                breakpoint: 480,
-                settings: {
-                    slidesToShow: 1,
-                    slidesToScroll: 1
-                }
-            }
         ]
     };
+
     return (
         <ThemeProvider theme={theme}>
             <div className='p-10 bg-[#f2f2f2]'>
-                <Typography variant="body1" color="initial"
+                <Typography variant="body1"
                     sx={{
                         color: "#FF9843",
                         fontSize: "30px",
-                        fontFamily: '"Poppins", sans-serif',
-                        textAlign: "center"
+                        textAlign: "center",
+                        mb: 2,
                     }}
                 >
-                    WHy Choose Him
-
+                    Why Choose Him
                 </Typography>
-                <Typography variant="body1" color="initial"
+                <Typography variant="h4" component="h2"
                     sx={{
-
-                        fontSize: "40px",
-                        fontFamily: '"Poppins", sans-serif',
+                        fontWeight: "700",
                         textAlign: "center",
-                        fontWeight: "700"
+                        mb: 8,
                     }}
                 >
                     News And Events
-
                 </Typography>
-                <div className=' w-full p-[100px]'>
-                    <div className="slider-container">
-
-                        <Slider {...settings} className='w-full m-auto'>
-                            <Card sx={{}}>
+                <div className='w-full p-[50px]'>
+                    <Slider {...settings}>
+                        {carouselItems.map((item, index) => (
+                            <Card key={index} sx={{ maxWidth: 345, m: '0 auto' }}>
                                 <CardMedia
                                     sx={{ height: 140 }}
-                                    image="/static/images/cards/contemplative-reptile.jpg"
-                                    title="green iguana"
+                                    image={item.image}
+                                    title={item.title}
                                 />
                                 <CardContent>
                                     <Typography gutterBottom variant="h5" component="div">
-                                        Lizard
+                                        {item.title}
                                     </Typography>
                                     <Typography variant="body2" color="text.secondary">
-                                        Lizards are a widespread group of squamate reptiles, with over 6,000
-                                        species, ranging across all continents except Antarctica
+                                        {item.description}
                                     </Typography>
                                 </CardContent>
                                 <CardActions>
-                                    <Button size="small">Share</Button>
-                                    <Button size="small">Learn More</Button>
+                                    <Button size="small" color="primary">Share</Button>
+                                    <Button size="small" color="primary">Learn More</Button>
                                 </CardActions>
                             </Card>
-                            <Card sx={{}} >
-                                <CardMedia
-                                    sx={{ height: 140 }}
-                                    image="/static/images/cards/contemplative-reptile.jpg"
-                                    title="green iguana"
-                                />
-                                <CardContent>
-                                    <Typography gutterBottom variant="h5" component="div">
-                                        Lizard
-                                    </Typography>
-                                    <Typography variant="body2" color="text.secondary">
-                                        Lizards are a widespread group of squamate reptiles, with over 6,000
-                                        species, ranging across all continents except Antarctica
-                                    </Typography>
-                                </CardContent>
-                                <CardActions>
-                                    <Button size="small">Share</Button>
-                                    <Button size="small">Learn More</Button>
-                                </CardActions>
-                            </Card>
-                            <Card sx={{}}>
-                                <CardMedia
-                                    sx={{ height: 140 }}
-                                    image="/static/images/cards/contemplative-reptile.jpg"
-                                    title="green iguana"
-                                />
-                                <CardContent>
-                                    <Typography gutterBottom variant="h5" component="div">
-                                        Lizard
-                                    </Typography>
-                                    <Typography variant="body2" color="text.secondary">
-                                        Lizards are a widespread group of squamate reptiles, with over 6,000
-                                        species, ranging across all continents except Antarctica
-                                    </Typography>
-                                </CardContent>
-                                <CardActions>
-                                    <Button size="small">Share</Button>
-                                    <Button size="small">Learn More</Button>
-                                </CardActions>
-                            </Card>
-                        </Slider>
-                    </div>
-
+                        ))}
+                    </Slider>
                 </div>
             </div>
         </ThemeProvider>
-    )
+    );
 }

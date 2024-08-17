@@ -1,38 +1,36 @@
-import { Typography } from '@mui/material'
-import React from 'react'
-import TestCarosal from './TestCarosal'
+import { Typography } from '@mui/material';
+import React from 'react';
+import TestCarosal from './TestCarosal';
 
 export default function Testimonial() {
     return (
         <div className='p-10'>
-            <Typography variant="body1" color="initial"
+            <Typography
+                variant="body1"
                 sx={{
                     color: "#FF9843",
                     fontSize: "30px",
                     fontFamily: '"Poppins", sans-serif',
-                    textAlign: "center"
+                    textAlign: "center",
                 }}
             >
-                Testimonial
-
+                Testimonials
             </Typography>
-            <Typography variant="body1" color="initial"
+            <Typography
+                variant="body1"
                 sx={{
-
                     fontSize: "40px",
                     fontFamily: '"Poppins", sans-serif',
                     textAlign: "center",
-                    fontWeight: "700"
+                    fontWeight: "700",
                 }}
             >
-                His Cliend Saying
-
+                What Clients Are Saying
             </Typography>
 
-            <div className='w-full'>
+            <div className='w-full mt-6'>
                 <TestCarosal />
             </div>
-
         </div>
-    )
+    );
 }
