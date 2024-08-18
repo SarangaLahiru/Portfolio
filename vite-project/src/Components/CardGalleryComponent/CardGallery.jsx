@@ -128,20 +128,48 @@ export default function CardGallery() {
             return;
         }
 
-        // Update likes count and likedBy array in the cards collection
-        const cardRef = doc(db, 'cards', cardId);
-        await updateDoc(cardRef, {
-            likes: currentLikes + 1,
-            likedBy: [...currentLikedBy, user.uid],
-        });
-
-        // Update liked cards for the user
-        const userLikesRef = doc(db, 'userLikes', user.uid);
-        await setDoc(userLikesRef, {
-            likedCards: [...likedCards, cardId],
-        }, { merge: true });
+        // Optimistically update the UI
+        setCards(prevCards => prevCards.map(card =>
+            card.id === cardId
+                ? {
+                    ...card,
+                    likes: card.likes + 1,
+                    likedBy: [...(card.likedBy || []), user.uid],
+                    likedByDetails: [...(card.likedByDetails || []), { name: user.displayName, avatar: user.photoURL }]
+                }
+                : card
+        ));
 
         setLikedCards((prev) => [...prev, cardId]);
+
+        try {
+            // Update Firestore
+            const cardRef = doc(db, 'cards', cardId);
+            await updateDoc(cardRef, {
+                likes: currentLikes + 1,
+                likedBy: [...currentLikedBy, user.uid],
+            });
+
+            const userLikesRef = doc(db, 'userLikes', user.uid);
+            await setDoc(userLikesRef, {
+                likedCards: [...likedCards, cardId],
+            }, { merge: true });
+        } catch (error) {
+            // Revert the optimistic update if there is an error
+            console.error("Error updating like: ", error);
+            setCards(prevCards => prevCards.map(card =>
+                card.id === cardId
+                    ? {
+                        ...card,
+                        likes: card.likes - 1,
+                        likedBy: card.likedBy.filter(uid => uid !== user.uid),
+                        likedByDetails: card.likedByDetails.filter(userDetail => userDetail.uid !== user.uid)
+                    }
+                    : card
+            ));
+
+            setLikedCards((prev) => prev.filter(id => id !== cardId));
+        }
     };
 
     const handleClose = () => {

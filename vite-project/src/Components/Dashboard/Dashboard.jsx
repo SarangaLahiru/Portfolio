@@ -1,8 +1,9 @@
 // src/pages/Dashboard.js
 import { Container, Grid, Paper, Typography } from '@mui/material';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import React from 'react';
-import FeedbackDisplay from './Components/FeedbackDisplay';
+import React, { useMemo } from 'react';
+import { useAuth } from '../../AuthData';
+import Home from '../../Pages/Home';
 import FeedbackForm from './Components/FeedbackForm';
 import OrderForm from './Components/OrderForm';
 import OrdersDashboard from './Components/OrdersDashboard';
@@ -16,46 +17,41 @@ const theme = createTheme({
 });
 
 export default function Dashboard() {
-    return (
+    const { user } = useAuth();
+
+    // Memoize the content to avoid unnecessary re-renders
+    const dashboardContent = useMemo(() => (
         <ThemeProvider theme={theme}>
-            <Container maxWidth="lg" sx={{ mt: 4 }}>
+            <Container maxWidth="lg" sx={{ mt: 4, mb: 4 }}>
                 <Typography variant="h4" gutterBottom sx={{ mb: 4, textAlign: 'center' }}>
                     User Dashboard
                 </Typography>
                 <Grid container spacing={4}>
-                    {/* Order Form and Orders Dashboard */}
+                    {/* Orders Dashboard and Order Form */}
                     <Grid item xs={12} md={6}>
-                        <Paper elevation={3} sx={{ p: 3 }}>
-                            <Typography variant="h6" gutterBottom>
-                                Submit Your Order
-                            </Typography>
-                            <OrderForm />
-                        </Paper>
-                        <Paper elevation={3} sx={{ mt: 4, p: 3 }}>
-                            <Typography variant="h6" gutterBottom>
-                                Your Orders
-                            </Typography>
+                        <Paper elevation={3} sx={{ p: 3, mb: 4 }}>
                             <OrdersDashboard />
+                        </Paper>
+                        <Paper elevation={3} sx={{ p: 3 }}>
+                            <OrderForm />
                         </Paper>
                     </Grid>
 
-                    {/* Feedback Form and Feedback Display */}
+                    {/* Feedback Form */}
                     <Grid item xs={12} md={6}>
                         <Paper elevation={3} sx={{ p: 3 }}>
-                            <Typography variant="h6" gutterBottom>
-                                Submit Feedback
-                            </Typography>
                             <FeedbackForm />
-                        </Paper>
-                        <Paper elevation={3} sx={{ mt: 4, p: 3 }}>
-                            <Typography variant="h6" gutterBottom>
-                                User Feedbacks
-                            </Typography>
-                            <FeedbackDisplay />
                         </Paper>
                     </Grid>
                 </Grid>
             </Container>
         </ThemeProvider>
-    );
+    ), [user]);
+
+    // If the user is not authenticated, redirect to the Home page
+    if (!user) {
+        return <Home />;
+    }
+
+    return dashboardContent;
 }
