@@ -10,8 +10,7 @@ import {
   DialogTitle,
   Divider,
   ThemeProvider,
-  Tooltip,
-  useTheme
+  Tooltip
 } from '@mui/material';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
@@ -44,7 +43,6 @@ function NavBar() {
   const [open, setOpen] = React.useState(false);
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
-  const currentTheme = useTheme();
   const location = useLocation();
   const navigate = useNavigate();
 
@@ -62,6 +60,13 @@ function NavBar() {
 
   const handleCloseUserMenu = () => {
     setAnchorElUser(null);
+  };
+
+  const handleMenuItemClick = (callback) => {
+    handleCloseUserMenu();
+    if (callback) {
+      callback();
+    }
   };
 
   const handleSignInDialogOpen = () => {
@@ -228,20 +233,20 @@ function NavBar() {
                   open={Boolean(anchorElUser)}
                   onClose={handleCloseUserMenu}
                 >
-                  <MenuItem onClick={handleCloseUserMenu}>
+                  <MenuItem onClick={() => handleMenuItemClick()}>
                     <Typography textAlign="center" sx={{ fontSize: "20px" }}>
                       {user.displayName}
                     </Typography>
                   </MenuItem>
-                  <MenuItem onClick={handleCloseUserMenu}>
+                  <MenuItem onClick={() => handleMenuItemClick()}>
                     <Typography textAlign="center">{user.email}</Typography>
                   </MenuItem>
                   <Divider />
-                  <MenuItem onClick={handleNavigateToDashboard}>
+                  <MenuItem onClick={() => handleMenuItemClick(handleNavigateToDashboard)}>
                     <Typography textAlign="center">Dashboard</Typography>
                   </MenuItem>
                   <Divider />
-                  <MenuItem onClick={signOutUser}>
+                  <MenuItem onClick={() => handleMenuItemClick(signOutUser)}>
                     <Typography textAlign="center">Sign Out</Typography>
                   </MenuItem>
                 </Menu>
@@ -278,7 +283,7 @@ function NavBar() {
           sx={{
             fontSize: 28,
             textAlign: "center",
-            padding: "30px",
+            padding: "50px",
           }}
         >
 
@@ -311,17 +316,14 @@ function NavBar() {
             }}
           >
             <img
-              width="30px"
               src="https://cdn.iconscout.com/icon/free/png-256/free-google-160-189824.png?f=webp&w=128"
               alt="Google Icon"
-              style={{ marginRight: 8 }}
+              style={{ width: 25, height: 25, marginRight: 10 }}
             />
-            Sign in
+            Sign in with Google
           </Button>
         </DialogContent>
       </Dialog>
-
-
     </ThemeProvider>
   );
 }
