@@ -276,47 +276,51 @@ function NavBar() {
         <DialogTitle
           id="alert-dialog-title"
           sx={{
-            fontSize: "40px",
+            fontSize: 28,
             textAlign: "center",
-            padding: "40px 40px",
+            padding: "30px",
           }}
         >
-          {"Use Google for Sign in"}
+          Sign in with Google
         </DialogTitle>
-        <DialogContent sx={{ padding: "80px 0px" }}>
+        <DialogContent sx={{ padding: "50px 0" }}>
           <DialogContentText
             id="alert-dialog-description"
             sx={{
-              width: "full",
-              margin: "auto",
+              width: "100%",
               textAlign: "center",
+              fontSize: 14,
+              marginBottom: 3,
             }}
           >
-            <Button
-              variant="outlined"
-              onClick={handleSignInWithGoogle}
-              sx={{
-                padding: "15px 80px",
-                fontSize: "20px",
-                borderRadius: "50px",
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                textTransform: 'none',
-                margin: 'auto',
-              }}
-            >
-              <img
-                width="40px"
-                src="https://cdn.iconscout.com/icon/free/png-256/free-google-160-189824.png?f=webp&w=128"
-                alt="Google Icon"
-                style={{ marginRight: '10px' }}
-              />
-              Sign in
-            </Button>
+            Access your account quickly and securely.
           </DialogContentText>
+          <Button
+            variant="outlined"
+            onClick={handleSignInWithGoogle}
+            sx={{
+              padding: "12px 60px",
+              fontSize: 18,
+              borderRadius: "50px",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              textTransform: "none",
+              margin: "auto",
+            }}
+          >
+            <img
+              width="30px"
+              src="https://cdn.iconscout.com/icon/free/png-256/free-google-160-189824.png?f=webp&w=128"
+              alt="Google Icon"
+              style={{ marginRight: 8 }}
+            />
+            Sign in
+          </Button>
         </DialogContent>
       </Dialog>
+
+
     </ThemeProvider>
   );
 }
