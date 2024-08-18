@@ -1,6 +1,8 @@
 import { Button, Card, CardActions, CardContent, CardMedia, createTheme, ThemeProvider, Typography } from '@mui/material';
 import React from 'react';
 import Slider from "react-slick";
+import "slick-carousel/slick/slick-theme.css";
+import "slick-carousel/slick/slick.css";
 
 const theme = createTheme({
     palette: {
