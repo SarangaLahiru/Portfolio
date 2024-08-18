@@ -1,6 +1,6 @@
 import { Typography } from '@mui/material';
 import React from 'react';
-import TestCarosal from './TestCarosal';
+import FeedbackCarousel from './TestCarosal';
 
 export default function Testimonial() {
     return (
@@ -29,7 +29,7 @@ export default function Testimonial() {
             </Typography>
 
             <div className='w-full mt-6'>
-                <TestCarosal />
+                <FeedbackCarousel />
             </div>
         </div>
     );

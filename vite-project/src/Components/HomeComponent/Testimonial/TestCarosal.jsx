@@ -1,6 +1,7 @@
-import { Avatar, createTheme, Grid, ThemeProvider } from '@mui/material';
-import React from 'react';
+import { Avatar, createTheme, Grid, ThemeProvider, Typography } from '@mui/material';
+import React, { useEffect, useState } from 'react';
 import Slider from "react-slick";
+import { getFeedbacks } from '../../../firebaseFunctions';
 
 const theme = createTheme({
     palette: {
@@ -10,6 +11,24 @@ const theme = createTheme({
     },
 });
 export default function TestCarosal() {
+
+    const [feedbacks, setFeedbacks] = useState([]);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
+
+    useEffect(() => {
+        const fetchFeedbacks = async () => {
+            try {
+                const feedbackList = await getFeedbacks();
+                setFeedbacks(feedbackList);
+            } catch (err) {
+                setError('Failed to load feedbacks.');
+            } finally {
+                setLoading(false);
+            }
+        };
+        fetchFeedbacks();
+    }, []);
 
     const settings = {
         dots: true,
@@ -46,6 +65,22 @@ export default function TestCarosal() {
             }
         ]
     };
+
+    if (loading) {
+        return (
+            <div className='p-10'>
+                <Typography variant="h6" align="center">Loading feedbacks...</Typography>
+            </div>
+        );
+    }
+
+    if (error) {
+        return (
+            <div className='p-10'>
+                <Typography color="error" variant="h6" align="center">{error}</Typography>
+            </div>
+        );
+    }
     return (
         <ThemeProvider theme={theme}>
             <div className='p-10'>
@@ -54,87 +89,32 @@ export default function TestCarosal() {
                     <div className="slider-container">
 
                         <Slider {...settings} className='lg:w-[80%] m-auto'>
-                            <div className='lg:w-[300px]'>
-
-                                <Grid container spacing={2}>
-                                    <Grid item xs={12}>
-                                        <div className='flex'>
-                                            <Avatar alt="Cindy Baker" src="/static/images/avatar/3.jpg"
-                                                sx={{
-                                                    width: "80px",
-                                                    height: "80px",
-                                                    border: '2px #FF9843 solid'
-                                                }}
-                                            />
-                                            <div className='m-2'>
-                                                <h2 className=' text-[30px]'>Raul K.Smith</h2>
-                                                <h2 className=' text-[18px] text-[#858585]'>Client him</h2>
+                            {feedbacks.map((fb) => (
+                                <div key={fb.feedbackId} className='lg:w-[300px]'>
+                                    <Grid container spacing={2}>
+                                        <Grid item xs={12}>
+                                            <div className='flex'>
+                                                <Avatar
+                                                    alt={fb.userName}
+                                                    src={fb.avatar || '/static/images/avatar/3.jpg'} // Fallback image
+                                                    sx={{
+                                                        width: '80px',
+                                                        height: '80px',
+                                                        border: '2px #FF9843 solid'
+                                                    }}
+                                                />
+                                                <div className='m-2'>
+                                                    <h2 className='text-[30px]'>{fb.userName}</h2>
+                                                    <h2 className='text-[18px] text-[#858585]'>{fb.role || 'Client'}</h2>
+                                                </div>
                                             </div>
-
-
-                                        </div>
+                                        </Grid>
+                                        <Grid item xs={12}>
+                                            <h2 className='text-[20px] lg:w-[500px]'>{fb.feedback}</h2>
+                                        </Grid>
                                     </Grid>
-                                    <Grid item xs={12}>
-                                        <h2 className=' text-[20px] lg:w-[500px]'>Wikipedia is a free, open content online encyclopedia created through the collaborative effort of a community of users known as Wikipedians. Anyone registered on the site can create an article for publication; registration is not required to edit articles.</h2>
-                                    </Grid>
-
-                                </Grid>
-                            </div>
-                            <div className='lg:w-[300px]'>
-
-                                <Grid container spacing={2}>
-                                    <Grid item xs={12}>
-                                        <div className='flex'>
-                                            <Avatar alt="Cindy Baker" src="/static/images/avatar/3.jpg"
-                                                sx={{
-                                                    width: "80px",
-                                                    height: "80px",
-                                                    border: '2px #FF9843 solid'
-                                                }}
-                                            />
-                                            <div className='m-2'>
-                                                <h2 className=' text-[30px]'>Raul K.Smith</h2>
-                                                <h2 className=' text-[18px] text-[#858585]'>Client him</h2>
-                                            </div>
-
-
-                                        </div>
-                                    </Grid>
-                                    <Grid item xs={12}>
-                                        <h2 className=' text-[20px] lg:w-[500px]'>Wikipedia is a free, open content online encyclopedia created through the collaborative effort of a community of users known as Wikipedians. Anyone registered on the site can create an article for publication; registration is not required to edit articles.</h2>
-                                    </Grid>
-
-                                </Grid>
-                            </div>
-                            <div className='lg:w-[300px]'>
-
-                                <Grid container spacing={3}>
-                                    <Grid item xs={12}>
-                                        <div className='flex'>
-                                            <Avatar alt="Cindy Baker" src="/static/images/avatar/3.jpg"
-                                                sx={{
-                                                    width: "80px",
-                                                    height: "80px",
-                                                    border: '2px #FF9843 solid'
-                                                }}
-                                            />
-                                            <div className='m-2'>
-                                                <h2 className=' text-[30px]'>Raul K.Smith</h2>
-                                                <h2 className=' text-[18px] text-[#858585]'>Client him</h2>
-                                            </div>
-
-
-                                        </div>
-                                    </Grid>
-                                    <Grid item xs={12}>
-                                        <h2 className=' text-[20px] lg:w-[500px]'>Wikipedia is a free, open content online encyclopedia created through the collaborative effort of a community of users known as Wikipedians. Anyone registered on the site can create an article for publication; registration is not required to edit articles.</h2>
-                                    </Grid>
-
-                                </Grid>
-                            </div>
-
-
-
+                                </div>
+                            ))}
                         </Slider>
                     </div>
 
