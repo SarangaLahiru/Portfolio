@@ -282,7 +282,7 @@ function NavBar() {
           }}
         >
 
-          Sign in with Googl
+          Sign in with Google
         </DialogTitle>
         <DialogContent sx={{ padding: "50px 0" }}>
           <DialogContentText
