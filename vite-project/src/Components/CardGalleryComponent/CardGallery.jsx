@@ -198,7 +198,7 @@ export default function CardGallery() {
                         <Grid container spacing={2} sx={{ marginTop: '15px' }}>
                             {cards.map((card) => (
                                 <Grid item xs={12} sm={3} key={card.id}>
-                                    <Card sx={{ maxWidth: 400 }} onClick={() => handleDetailOpen(card)}>
+                                    <Card sx={{ maxWidth: 400 }} >
                                         <CardHeader
                                             action={
                                                 <IconButton aria-label="settings" onClick={() => handleDetailOpen(card)}>
@@ -208,7 +208,7 @@ export default function CardGallery() {
                                             title={card.title}
                                             subheader={card.subheader}
                                         />
-                                        <CardMedia component="img" height="194" image={card.image} alt={card.title} />
+                                        <CardMedia component="img" height="194" image={card.image} alt={card.title} onClick={() => handleDetailOpen(card)} />
                                         <CardContent>
                                             <Typography variant="body2" color="text.secondary">
                                                 {card.description}
@@ -235,7 +235,7 @@ export default function CardGallery() {
                                                         )}
                                                     </AvatarGroup>
                                                 ) : (
-                                                    <Typography>No one yet</Typography>
+                                                    <Typography></Typography>
                                                 )}
                                             </IconButton>
                                             <IconButton aria-label="share">
@@ -336,10 +336,10 @@ export default function CardGallery() {
                             <Close />
                         </IconButton>
                         <Typography sx={{ ml: 2, flex: 1 }} variant="h6" component="div">
-                            Sound
+                            Back
                         </Typography>
                         <Button autoFocus color="inherit" onClick={handleDetailClose}>
-                            Save
+                            close
                         </Button>
                     </Toolbar>
                 </AppBar>
@@ -361,7 +361,7 @@ export default function CardGallery() {
                                 <Grid item xs={6}>
                                     <DialogContentText sx={{ margin: '0 15px' }}>
                                         <img
-                                            src={selectedCard?.image}
+                                            src={selectedCard?.image1}
                                             alt={selectedCard?.title}
                                             style={{ width: '100%', borderRadius: '8px' }}
                                         />
@@ -370,7 +370,7 @@ export default function CardGallery() {
                                 <Grid item xs={6}>
                                     <DialogContentText sx={{ margin: '0 15px' }}>
                                         <img
-                                            src={selectedCard?.image}
+                                            src={selectedCard?.image2}
                                             alt={selectedCard?.title}
                                             style={{ width: '100%', borderRadius: '8px' }}
                                         />
